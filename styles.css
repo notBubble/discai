@@ -1,0 +1,188 @@
+/* Import Lexend font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lexend&display=swap');
+
+/* Root variables */
+:root {
+    --sent-color: #007bff;
+    --received-color: #5c5c5c;
+    --font-family: 'Lexend', sans-serif; /* Define Lexend as the font family */
+}
+
+/* Global styles */
+body {
+    font-family: var(--font-family); /* Use the defined font family */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1c1c1c;
+    color: #fff; /* Set default text color */
+}
+
+/* Chat container */
+#chat-container {
+    width: 10000vw;
+    max-width: 10000px;
+    height: 100vh;
+    max-height: 10000px;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: 5px;
+}
+
+/* Top bar */
+#top-bar {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #3b3b3b;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Profile */
+#profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+#profile-name {
+    flex-grow: 1;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Settings button */
+#settings-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Chat box */
+#chat-box {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px;
+    border-bottom: 1px solid #444;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Input container */
+#input-container {
+    display: flex;
+    padding: 10px;
+    background-color: #3b3b3b;
+    border-radius: 0 0 10px 10px;
+}
+
+/* Message input */
+#message-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    color: #fff; /* Set text color for input */
+    background-color: #444; /* Set background color for input */
+    font-family: var(--font-family); /* Use Lexend font for message input */
+}
+
+/* Send button */
+#send-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: var(--sent-color);
+    color: white;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-family: var(--font-family); /* Use Lexend font for send button */
+}
+
+#send-button:hover {
+    background-color: darken(var(--sent-color), 10%);
+}
+
+/* Message styling */
+.message {
+    max-width: 80%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 10px;
+    word-wrap: break-word;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.message.sent {
+    background-color: var(--sent-color);
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 0;
+}
+
+.message.received {
+    background-color: var(--received-color);
+    color: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 0;
+}
+
+.message-info {
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+}
+
+/* Loading animation */
+.message.loading {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.message.received.loading::before {
+    content: '';
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Example animation for message fade in */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
